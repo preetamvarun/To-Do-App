@@ -1,16 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_app/widgetsDir/listTiles.dart';
+import 'package:to_do_app/screens/bottomSheetScreen.dart';
+
 
 class TaskScreen extends StatelessWidget {
-  const TaskScreen({Key? key}) : super(key: key);
+
+  Widget bottomSheet(BuildContext context) => buttomSheetContainer();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(
-        onPressed: (){print("Floating Action Button Is Pressed");},
+        onPressed: (){
+          showModalBottomSheet(context: context, builder: bottomSheet);
+        },
         backgroundColor: Colors.lightBlueAccent,
         child: Icon(
           Icons.add,
@@ -44,7 +49,7 @@ class TaskScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "12 Tasks",
+                  "4 Tasks",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -60,7 +65,9 @@ class TaskScreen extends StatelessWidget {
                 child: ListView(
                   children: [
                     listTileWidget(stringText: "Buy Butter Milk",),
-                    listTileWidget(stringText: "Develop Flutter Projects",)
+                    listTileWidget(stringText: "Develop Flutter Projects",),
+                    listTileWidget(stringText: "Do Front End",),
+                    listTileWidget(stringText: "Do Cp",)
                   ],
                 ),
               ),
@@ -78,5 +85,3 @@ class TaskScreen extends StatelessWidget {
     );
   }
 }
-
-
