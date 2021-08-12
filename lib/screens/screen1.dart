@@ -55,11 +55,14 @@ class TaskScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              child: ListView(
-                children: [
-                  listTileWidget(stringText: "Buy Butter Milk",),
-                  listTileWidget(stringText: "Develop Flutter Projects",)
-                ],
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal : 20.0),
+                child: ListView(
+                  children: [
+                    listTileWidget(stringText: "Buy Butter Milk",),
+                    listTileWidget(stringText: "Develop Flutter Projects",)
+                  ],
+                ),
               ),
               decoration: BoxDecoration(
                 color: Colors.white,
