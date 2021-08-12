@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:to_do_app/widgetsDir/listTiles.dart';
 
 class TaskScreen extends StatelessWidget {
   const TaskScreen({Key? key}) : super(key: key);
@@ -49,20 +50,8 @@ class TaskScreen extends StatelessWidget {
             child: Container(
               child: ListView(
                 children: [
-                  ListTile(
-                    leading : Text("Buy Butter Milk", style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 18.0,
-                    ),),
-                    trailing : Icon(Icons.check_box_outline_blank),
-                  ),
-                  ListTile(
-                    leading : Text("Develop Flutter Projects",style:TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 18.0,
-                    ),),
-                    trailing : Icon(Icons.check_box_outline_blank),
-                  ),
+                  listTileWidget(stringText: "Buy Butter Milk",),
+                  listTileWidget(stringText: "Develop Flutter Projects",)
                 ],
               ),
               decoration: BoxDecoration(
@@ -79,3 +68,5 @@ class TaskScreen extends StatelessWidget {
     );
   }
 }
+
+
