@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+// ignore: camel_case_types
 class listTileWidget extends StatelessWidget {
 
   final stringText;
+  bool checkedValue=false;
 
   listTileWidget({this.stringText});
 
@@ -13,7 +15,10 @@ class listTileWidget extends StatelessWidget {
         fontWeight: FontWeight.w500,
         fontSize: 18.0,
       ),),
-      trailing : Icon(Icons.check_box_outline_blank),
+      trailing : Checkbox(
+        value: checkedValue,
+        onChanged: (bool? value) {  },
+      ),
     );
   }
 }

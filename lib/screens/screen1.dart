@@ -28,7 +28,7 @@ class TaskScreen extends StatelessWidget {
                 backgroundColor: Colors.white,
                   radius: 30.0,
                   child: Icon(
-                    Icons.analytics_outlined,
+                    Icons.list,
                     size: 30.0,
                   ),
                 ),
