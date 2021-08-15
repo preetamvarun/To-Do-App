@@ -1,57 +1,30 @@
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types, must_be_immutable
-class listTileWidget extends StatefulWidget {
+class listTileWidget extends StatelessWidget {
 
+  final isChecked;
   final stringText;
-  listTileWidget({this.stringText});
+  final onChanged;
 
-  @override
-  _listTileWidgetState createState() => _listTileWidgetState();
-}
-
-// ignore: camel_case_types
-class _listTileWidgetState extends State<listTileWidget> {
-
-  bool isChecked = false;
+  listTileWidget({this.stringText,this.isChecked,this.onChanged});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title : Text(
-          widget.stringText,
-          style: TextStyle(
+      title: Text(
+        stringText,
+        style: TextStyle(
           fontWeight: FontWeight.w500,
           fontSize: 18.0,
           decoration: isChecked ? TextDecoration.lineThrough : null,
         ),
       ),
-      trailing : taskCheckBox(
-        checkBoxValue: isChecked,
-        toggleCheckBoxState: (checkBoxState){
-          setState(() {
-            isChecked = checkBoxState;
-          });
-        },
+      trailing: Checkbox(
+        activeColor: Colors.lightBlueAccent,
+        value: isChecked,
+        onChanged: onChanged,
       ),
-    );
-  }
-}
-
-// ignore: camel_case_types
-class taskCheckBox extends StatelessWidget {
-
-  final checkBoxValue;
-  final toggleCheckBoxState;
-
-  taskCheckBox({this.checkBoxValue,this.toggleCheckBoxState});
-
-  @override
-  Widget build(BuildContext context) {
-    return Checkbox(
-      activeColor: Colors.lightBlueAccent,
-      value: checkBoxValue,
-      onChanged: toggleCheckBoxState,
     );
   }
 }

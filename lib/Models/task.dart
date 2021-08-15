@@ -1,4 +1,5 @@
 class Task{
+
   final taskName;
   bool isDone;
 
