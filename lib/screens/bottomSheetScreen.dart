@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
+String newTaskTitle = '';
+
 // ignore: camel_case_types
 class bottomSheetContainer extends StatelessWidget {
+
+  final addNewTask;
+
+  bottomSheetContainer({this.addNewTask});
 
   @override
   Widget build(BuildContext context) {
@@ -25,21 +31,23 @@ class bottomSheetContainer extends StatelessWidget {
                 fontWeight : FontWeight.w500,
               ),),
               TextField(
-                autofocus: true,
                 textAlign: TextAlign.center,
+                onChanged: (String newValue){
+                  newTaskTitle = newValue;
+                },
               ),
               SizedBox(
                 height: 20,
               ),
               TextButton(
+                onPressed: (){
+                  addNewTask(newTaskTitle);
+                },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.lightBlueAccent),
                 ),
-                onPressed: (){
-
-                },
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 50.0,vertical: 5.0),
+                  padding: EdgeInsets.symmetric(horizontal: 50.0,vertical: 5.0),
                   child: Text("Add", style:TextStyle(
                       color: Colors.white,
                       fontSize: 20.0,

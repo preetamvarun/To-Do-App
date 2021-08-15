@@ -2,11 +2,33 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_app/screens/bottomSheetScreen.dart';
 import 'package:to_do_app/widgetsDir/tasklists.dart';
+import 'package:to_do_app/Models/task.dart';
 
 
-class TaskScreen extends StatelessWidget {
+class TaskScreen extends StatefulWidget {
 
-  Widget bottomSheet(BuildContext context) => bottomSheetContainer();
+  @override
+  _TaskScreenState createState() => _TaskScreenState();
+}
+
+class _TaskScreenState extends State<TaskScreen> {
+
+  List<Task>listOfTasks = [
+    Task(taskName: "BuyButterMilk"),
+    Task(taskName: "Develop Flutter Projects"),
+    Task(taskName: "Do Front End"),
+    Task(taskName: "Practice datastructures and algorithms"),
+  ];
+
+
+  Widget bottomSheet(BuildContext context) => bottomSheetContainer(
+    addNewTask: (textValue){
+      setState(() {
+        listOfTasks.add(Task(taskName: textValue));
+      });
+      Navigator.pop(context);
+    },
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +71,7 @@ class TaskScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "4 Tasks",
+                  "${listOfTasks.length} Tasks",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -62,7 +84,9 @@ class TaskScreen extends StatelessWidget {
             child: Container(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal : 20.0),
-                child: taskList(),
+                child: taskList(
+                  tasks: listOfTasks,
+                ),
               ),
               decoration: BoxDecoration(
                 color: Colors.white,

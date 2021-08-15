@@ -5,34 +5,34 @@ import 'package:to_do_app/Models/task.dart';
 // ignore: camel_case_types
 class taskList extends StatefulWidget {
 
+  final List<Task>tasks;
+
+  taskList({required this.tasks});
+
   @override
   _taskListState createState() => _taskListState();
 }
 
+// ignore: camel_case_types
 class _taskListState extends State<taskList> {
 
-  List<Task>listOfTasks = [
-    Task(taskName: "BuyButterMilk"),
-    Task(taskName: "Develop Flutter Projects"),
-    Task(taskName: "Do Front End"),
-    Task(taskName: "Practice datastructures and algorithms"),
-  ];
 
   @override
   Widget build(BuildContext context) {
+
     return ListView.builder(
       itemBuilder: (context,index){
         return listTileWidget(
-          stringText: listOfTasks[index].taskName,
-          isChecked: listOfTasks[index].isDone,
+          stringText: widget.tasks[index].taskName,
+          isChecked: widget.tasks[index].isDone,
           onChanged: (newValue){
             setState(() {
-              listOfTasks[index].toggleIsDone();
+              widget.tasks[index].toggleIsDone();
             });
           },
         );
       },
-      itemCount: listOfTasks.length,
+      itemCount: widget.tasks.length,
     );
   }
 }
