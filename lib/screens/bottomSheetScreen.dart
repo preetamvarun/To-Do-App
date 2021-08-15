@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-
-class buttomSheetContainer extends StatelessWidget {
+// ignore: camel_case_types
+class bottomSheetContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +25,7 @@ class buttomSheetContainer extends StatelessWidget {
                 fontWeight : FontWeight.w500,
               ),),
               TextField(
+                autofocus: true,
                 textAlign: TextAlign.center,
               ),
               SizedBox(
@@ -38,10 +39,11 @@ class buttomSheetContainer extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 50.0,vertical: 5.0),
                   child: Text("Add", style:TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
+                      color: Colors.white,
+                      fontSize: 20.0,
+                    ),
                   ),
-                  ),),
+                ),
               ),
             ],
           ),

@@ -6,7 +6,7 @@ import 'package:to_do_app/screens/bottomSheetScreen.dart';
 
 class TaskScreen extends StatelessWidget {
 
-  Widget bottomSheet(BuildContext context) => buttomSheetContainer();
+  Widget bottomSheet(BuildContext context) => bottomSheetContainer();
 
   @override
   Widget build(BuildContext context) {
