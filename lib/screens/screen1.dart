@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:to_do_app/widgetsDir/listTiles.dart';
 import 'package:to_do_app/screens/bottomSheetScreen.dart';
+import 'package:to_do_app/widgetsDir/tasks.dart';
 
 
 class TaskScreen extends StatelessWidget {
@@ -62,14 +62,7 @@ class TaskScreen extends StatelessWidget {
             child: Container(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal : 20.0),
-                child: ListView(
-                  children: [
-                    listTileWidget(stringText: "Buy Butter Milk",),
-                    listTileWidget(stringText: "Develop Flutter Projects",),
-                    listTileWidget(stringText: "Do Front End",),
-                    listTileWidget(stringText: "Do Cp",)
-                  ],
-                ),
+                child: taskList(),
               ),
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -85,3 +78,4 @@ class TaskScreen extends StatelessWidget {
     );
   }
 }
+
