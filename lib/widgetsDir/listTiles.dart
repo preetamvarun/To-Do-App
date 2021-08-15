@@ -18,7 +18,7 @@ class _listTileWidgetState extends State<listTileWidget> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading : Text(
+      title : Text(
           widget.stringText,
           style: TextStyle(
           fontWeight: FontWeight.w500,
@@ -49,6 +49,7 @@ class taskCheckBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Checkbox(
+      activeColor: Colors.lightBlueAccent,
       value: checkBoxValue,
       onChanged: toggleCheckBoxState,
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_app/screens/bottomSheetScreen.dart';
-import 'package:to_do_app/widgetsDir/tasks.dart';
+import 'package:to_do_app/widgetsDir/tasklists.dart';
 
 
 class TaskScreen extends StatelessWidget {
