@@ -6,12 +6,14 @@ class listTileWidget extends StatelessWidget {
   final isChecked;
   final stringText;
   final onChanged;
+  final longPress;
 
-  listTileWidget({this.stringText,this.isChecked,this.onChanged});
+  listTileWidget({this.stringText,this.isChecked,this.onChanged,this.longPress});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onLongPress: longPress,
       title: Text(
         stringText,
         style: TextStyle(

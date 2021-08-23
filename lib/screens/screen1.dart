@@ -2,33 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_app/screens/bottomSheetScreen.dart';
 import 'package:to_do_app/widgetsDir/tasklists.dart';
-import 'package:to_do_app/Models/task.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do_app/Models/notifierTaskClass.dart';
 
 
-class TaskScreen extends StatefulWidget {
+class TaskScreen extends StatelessWidget{
 
-  @override
-  _TaskScreenState createState() => _TaskScreenState();
-}
-
-class _TaskScreenState extends State<TaskScreen> {
-
-  List<Task>listOfTasks = [
-    Task(taskName: "BuyButterMilk"),
-    Task(taskName: "Develop Flutter Projects"),
-    Task(taskName: "Do Front End"),
-    Task(taskName: "Practice datastructures and algorithms"),
-  ];
-
-
-  Widget bottomSheet(BuildContext context) => bottomSheetContainer(
-    addNewTask: (textValue){
-      setState(() {
-        listOfTasks.add(Task(taskName: textValue));
-      });
-      Navigator.pop(context);
-    },
-  );
+  Widget bottomSheet(BuildContext context) => bottomSheetContainer();
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +51,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   ),
                 ),
                 Text(
-                  "${listOfTasks.length} Tasks",
+                  "${Provider.of<TaskData>(context).getNoOfTasks()} Tasks",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -84,9 +64,7 @@ class _TaskScreenState extends State<TaskScreen> {
             child: Container(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal : 20.0),
-                child: taskList(
-                  tasks: listOfTasks,
-                ),
+                child: taskList(),
               ),
               decoration: BoxDecoration(
                 color: Colors.white,

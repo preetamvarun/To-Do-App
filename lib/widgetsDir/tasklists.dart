@@ -1,38 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/widgetsDir/listTiles.dart';
-import 'package:to_do_app/Models/task.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do_app/Models/notifierTaskClass.dart';
 
 // ignore: camel_case_types
-class taskList extends StatefulWidget {
-
-  final List<Task>tasks;
-
-  taskList({required this.tasks});
-
-  @override
-  _taskListState createState() => _taskListState();
-}
-
-// ignore: camel_case_types
-class _taskListState extends State<taskList> {
-
-
+class taskList extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-
-    return ListView.builder(
-      itemBuilder: (context,index){
-        return listTileWidget(
-          stringText: widget.tasks[index].taskName,
-          isChecked: widget.tasks[index].isDone,
-          onChanged: (newValue){
-            setState(() {
-              widget.tasks[index].toggleIsDone();
-            });
+    return Consumer<TaskData>(
+      builder: (BuildContext context, TaskData, child) {
+        return ListView.builder(
+          itemBuilder: (context, index) {
+            final task = TaskData.listOfTasks[index];
+            return listTileWidget(
+              longPress: (){
+                TaskData.removeTask(index);
+              },
+              stringText: task.taskName,
+              isChecked: task.isDone,
+              onChanged: (newValue) {
+                TaskData.toggle(task);
+              },
+            );
           },
+          itemCount: TaskData.getNoOfTasks(),
         );
-      },
-      itemCount: widget.tasks.length,
+      }
     );
   }
 }

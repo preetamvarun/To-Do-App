@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do_app/Models/notifierTaskClass.dart';
 
 String newTaskTitle = '';
 
 // ignore: camel_case_types
 class bottomSheetContainer extends StatelessWidget {
-
-  final addNewTask;
-
-  bottomSheetContainer({this.addNewTask});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,7 @@ class bottomSheetContainer extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
+          padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
           child: Column(
             children: [
               Text("Add Task", style: TextStyle(
@@ -34,6 +32,7 @@ class bottomSheetContainer extends StatelessWidget {
                 textAlign: TextAlign.center,
                 onChanged: (String newValue){
                   newTaskTitle = newValue;
+                  print(newTaskTitle);
                 },
               ),
               SizedBox(
@@ -41,7 +40,8 @@ class bottomSheetContainer extends StatelessWidget {
               ),
               TextButton(
                 onPressed: (){
-                  addNewTask(newTaskTitle);
+                  Provider.of<TaskData>(context,listen: false).addNewTask(newTaskTitle);
+                  Navigator.pop(context);
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.lightBlueAccent),
